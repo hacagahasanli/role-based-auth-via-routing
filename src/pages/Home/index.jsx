@@ -39,7 +39,6 @@ const AccessContainer = styled.div`
         }
 
 `
-
 const NavLink = styled(Link)`
     text-decoration: none;
     font-size: 1.6rem;
@@ -51,5 +50,4 @@ const NavLink = styled(Link)`
     }
 
 `
-
 export default Home;

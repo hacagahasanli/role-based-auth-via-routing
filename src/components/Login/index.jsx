@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { quotes } from "../../constants";
 import { Card } from "../../shared/Card";
@@ -5,6 +6,12 @@ import { Card } from "../../shared/Card";
 export const Login = () => {
     const randomQuote = Math.floor(Math.random() * 12) + 1;
     const { quote, writer } = quotes[randomQuote]
+
+    const navigate = useNavigate()
+
+    const navigateHandler = () => navigate("/", { replace: true })
+
+
     return <Card>
         <h2 style={{ color: "white", marginTop: "2.3rem" }}>Login</h2>
         <InputContainer>
@@ -16,9 +23,28 @@ export const Login = () => {
             <span>{quote}</span>
             <span>{writer}</span>
         </Quote>
+        <Back onClick={navigateHandler}>Back</Back>
     </Card>
 }
 
+const Back = styled.span`
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    border: 1px solid #635985;
+    background: #443C68;
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 0.5rem;
+    letter-spacing: 0.05rem;
+    font-weight: 600;
+
+    :hover{
+        background:#635985
+    }
+
+`
 const Quote = styled.span`
     margin-top: 3rem;
     padding: 1rem;
@@ -30,7 +56,6 @@ const Quote = styled.span`
     align-items: center;
     gap: 0.5rem;
 `
-
 const Input = styled.input`
     width: 80%;
     padding: 0.5rem;
