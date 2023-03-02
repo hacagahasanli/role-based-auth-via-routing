@@ -11,7 +11,6 @@ export const Login = () => {
 
     const navigateHandler = () => navigate("/", { replace: true })
 
-
     return <Card>
         <h2 style={{ color: "white", marginTop: "2.3rem" }}>Login</h2>
         <InputContainer>
