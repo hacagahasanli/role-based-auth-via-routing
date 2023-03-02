@@ -12,3 +12,38 @@ export const quotes = {
     11: { quote: "Don't watch the clock; do what it does. Keep going and stay focused on your goals.", writer: "Sam Levenson" },
     12: { quote: "The best revenge is massive success. Let your success be the ultimate comeback.", writer: "Frank Sinatra" }
 };
+
+export const roles = {
+    CUSTOMER: "Customer",
+    ADMIN: "Admin",
+    SELLER: "Seller",
+    ASSISTANT: "Assistant"
+}
+
+
+export const authorizedUsers = [
+    {
+        username: "mike",
+        password: "mike123",
+        role: "Admin",
+        userID: "1mike23"
+    },
+    {
+        username: "jane",
+        password: "jane123",
+        role: "Assistant",
+        userID: "1jane23"
+    },
+    {
+        username: "kate",
+        password: "kate123",
+        role: "customer",
+        userID: "1kate23"
+    },
+    {
+        username: "ruf",
+        password: "ruf123",
+        role: "seller",
+        userID: "1ruf23"
+    },
+]

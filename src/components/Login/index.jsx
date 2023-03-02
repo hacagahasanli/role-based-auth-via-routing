@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../../context";
@@ -7,26 +7,55 @@ import { randomQuote } from "../../utils";
 
 export const Login = () => {
     const navigate = useNavigate()
-    const [value, seValue] = useState({ username: "", password: "" })
+    const [quote, setQuote] = useState([])
+    const [value, setValue] = useState({ username: "", password: "" })
     // let { count, countInc } = useContext(AuthContext)
-    const { quote, writer } = randomQuote()
-
     const navigateHandler = () => navigate("/", { replace: true })
 
-    const loginHandler = (e) => {
+    const setFieldValue = (e) => {
+        const { value, name } = e.target
+        setValue((prevValue) => ({ ...prevValue, [name]: value }))
+    }
+
+    useEffect(() => {
+        const quoteText = randomQuote()
+        setQuote(quoteText)
+    }, [])
+
+    const submitHandler = (e) => {
         e.preventDefault();
     }
 
+    // const inputs = [
+    //     {
+    //         type:"text",
+    //         placeholder:"Username",
+
+    //     }
+    // ]
+
     return <Card>
         <h2 style={{ color: "white", marginTop: "2.3rem" }}>Login</h2>
-        <InputContainer onSubmit={(e) => loginHandler(e)}>
-            <Input type="text" placeholder="Username" />
-            <Input type="password" placeholder="Password" />
+        <InputContainer onSubmit={(e) => submitHandler(e)}>
+            <Input
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={value.username}
+                onChange={e => setFieldValue(e)}
+            />
+            <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={value.password}
+                onChange={e => setFieldValue(e)}
+            />
             <Button type="submit">Login</Button>
         </InputContainer>
         <Quote>
-            <span>{quote}</span>
-            <span>{writer}</span>
+            <span>{quote?.quote}</span>
+            <span>{quote?.writer}</span>
         </Quote>
         <Back onClick={navigateHandler}>Back</Back>
     </Card>

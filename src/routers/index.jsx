@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Login, Auth, Error } from "../components";
+import { roles } from "../constants";
 import { Home } from "../pages";
 import { PageEntrance } from "../shared/PageEntrance";
 
@@ -17,28 +18,28 @@ export const router = createBrowserRouter([
         element: <Auth />,
         children: [{
             path: "/admin",
-            element: <PageEntrance name="Admin" />
+            element: <PageEntrance name={roles.ADMIN} />
         }]
     },
     {
         element: <Auth />,
         children: [{
             path: "/customer",
-            element: <PageEntrance name="Customer" />
+            element: <PageEntrance name={roles.ADMIN} />
         }]
     },
     {
         element: <Auth />,
         children: [{
             path: "/seller",
-            element: <PageEntrance name="Seller" />
+            element: <PageEntrance name={roles.SELLER} />
         }]
     },
     {
         element: <Auth />,
         children: [{
             path: "/assistant",
-            element: <PageEntrance name="Assistant" />
+            element: <PageEntrance name={roles.ASSISTANT} />
         }]
     },
 ])
