@@ -3,10 +3,14 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    let [count, setCount] = useState(0)
+    let [authUser, setAuthUser] = useState({})
+
+    const setUserValues = ({ username, password }) => {
+        console.log(username, password, "USERNAME PASSWORD")
+    }
 
     return (
-        <AuthContext.Provider value={{ count, setCount }}>
+        <AuthContext.Provider value={{ authUser, setUserValues }}>
             {children}
         </AuthContext.Provider>
     )

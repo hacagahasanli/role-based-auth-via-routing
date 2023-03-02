@@ -9,7 +9,7 @@ export const Login = () => {
     const navigate = useNavigate()
     const [quote, setQuote] = useState([])
     const [value, setValue] = useState({ username: "", password: "" })
-    // let { count, countInc } = useContext(AuthContext)
+    let { setUserValues } = useContext(AuthContext)
     const navigateHandler = () => navigate("/", { replace: true })
 
     const setFieldValue = (e) => {
@@ -24,42 +24,45 @@ export const Login = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        setUserValues(value)
     }
 
-    // const inputs = [
-    //     {
-    //         type:"text",
-    //         placeholder:"Username",
-
-    //     }
-    // ]
+    const inputs = [
+        {
+            id: "i1",
+            type: "text",
+            placeholder: "Username",
+            name: "username",
+        },
+        {
+            id: "i2",
+            type: "password",
+            placeholder: "Password",
+            name: "password",
+        }
+    ]
 
     return <Card>
-        <h2 style={{ color: "white", marginTop: "2.3rem" }}>Login</h2>
+        <LoginHeader>Login</LoginHeader>
         <InputContainer onSubmit={(e) => submitHandler(e)}>
-            <Input
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={value.username}
-                onChange={e => setFieldValue(e)}
-            />
-            <Input
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={value.password}
-                onChange={e => setFieldValue(e)}
-            />
+            {
+                inputs?.map(({ id, ...rest }) => <Input key={id} {...{ ...rest }} onChange={e => setFieldValue(e)} />)
+            }
             <Button type="submit">Login</Button>
         </InputContainer>
         <Quote>
-            <span>{quote?.quote}</span>
-            <span>{quote?.writer}</span>
+            {
+                Object.entries(quote).map(([key, value]) => <span key={key}>{value}</span>)
+            }
         </Quote>
         <Back onClick={navigateHandler}>Back</Back>
     </Card>
 }
+
+const LoginHeader = styled.h2`
+   color: white;
+   margin-top: 2.3rem;
+`
 
 const Back = styled.span`
     cursor: pointer;
