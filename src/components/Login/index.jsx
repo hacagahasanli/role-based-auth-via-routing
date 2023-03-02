@@ -1,22 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { quotes } from "../../constants";
 import { AuthContext } from "../../context";
 import { Card } from "../../shared/Card";
+import { randomQuote } from "../../utils";
 
 export const Login = () => {
-    // let { count, countInc } = useContext(AuthContext)
-    const randomQuote = Math.floor(Math.random() * 12) + 1;
-    const { quote, writer } = quotes[randomQuote]
-
     const navigate = useNavigate()
+    const [value, seValue] = useState({ username: "", password: "" })
+    // let { count, countInc } = useContext(AuthContext)
+    const { quote, writer } = randomQuote()
 
     const navigateHandler = () => navigate("/", { replace: true })
 
     const loginHandler = (e) => {
         e.preventDefault();
-
     }
 
     return <Card>
