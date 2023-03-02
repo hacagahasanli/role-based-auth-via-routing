@@ -1,15 +1,16 @@
 import styled from "styled-components"
 
-export const PageEntrance = (pageName) => {
-    return <Entrance>{`${pageName} Page`}</Entrance>
+export const PageEntrance = ({ name }) => {
+    return <Entrance>{`${name} Page`}</Entrance>
 }
 
 const Entrance = styled.div`
-    width: 100%;
-    min-height: 90vh;
+    width: max-content;
+    min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: 600;
+    color: #ffffff;
 `

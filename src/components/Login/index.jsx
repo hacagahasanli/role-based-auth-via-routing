@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { quotes } from "../../constants";
+import { AuthContext } from "../../context";
 import { Card } from "../../shared/Card";
 
 export const Login = () => {
+    // let { count, countInc } = useContext(AuthContext)
     const randomQuote = Math.floor(Math.random() * 12) + 1;
     const { quote, writer } = quotes[randomQuote]
 
@@ -11,9 +14,14 @@ export const Login = () => {
 
     const navigateHandler = () => navigate("/", { replace: true })
 
+    const loginHandler = (e) => {
+        e.preventDefault();
+
+    }
+
     return <Card>
         <h2 style={{ color: "white", marginTop: "2.3rem" }}>Login</h2>
-        <InputContainer>
+        <InputContainer onSubmit={(e) => loginHandler(e)}>
             <Input type="text" placeholder="Username" />
             <Input type="password" placeholder="Password" />
             <Button type="submit">Login</Button>
@@ -45,8 +53,8 @@ const Back = styled.span`
 
 `
 const Quote = styled.span`
-    margin-top: 3rem;
-    padding: 1rem;
+    margin-top: 2.2rem;
+    padding: 0 1.3rem;
     font-size: 1.2rem;
     color: #ffffff;
     text-align: center;
@@ -79,6 +87,7 @@ const Button = styled.button`
     border: 1px solid #635985;
     border-radius: 3px;
     background: #443C68;
+    cursor: pointer;
 
     :hover{
         background:#635985

@@ -1,12 +1,15 @@
 import styled from "styled-components"
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routers'
+import { AuthProvider } from "./context"
 
 const App = () => {
   return (
     <Container>
-      <RouterProvider {...{ router }}>
-      </RouterProvider>
+      <AuthProvider>
+        <RouterProvider {...{ router }}>
+        </RouterProvider>
+      </AuthProvider>
     </Container>
   )
 }
