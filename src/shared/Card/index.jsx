@@ -5,6 +5,7 @@ export const Card = ({ children }) => <StyledCard>
 </StyledCard>
 
 const StyledCard = styled.div`
+    position: relative;
     width: 350px;
     min-height: 450px;
     border-radius: 10px;
