@@ -1,3 +1,2 @@
 export { Login } from "./Login";
-
-export { Card } from "./Card";
+export { Card } from "../shared/Card";
