@@ -20,30 +20,30 @@ export const roles = {
     ASSISTANT: "Assistant"
 }
 
-
 export const authorizedUsers = [
     {
         username: "mike",
         password: "mike123",
-        role: "Admin",
+        role: "0310",
         userID: "1mike23"
     },
     {
         username: "jane",
         password: "jane123",
-        role: "Assistant",
+        role: "2703",
         userID: "1jane23"
     },
     {
         username: "kate",
         password: "kate123",
-        role: "customer",
+        role: "1010",
         userID: "1kate23"
     },
     {
         username: "ruf",
         password: "ruf123",
-        role: "seller",
+        role: "0303",
         userID: "1ruf23"
     },
 ]
+

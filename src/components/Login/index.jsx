@@ -1,19 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { authorizedUsers } from "../../constants";
 import { AuthContext } from "../../context";
 import { Card } from "../../shared/Card";
 import { randomQuote } from "../../utils";
+
+const errorMessage = {
+    EMPTY_FIELD: "Password or Username is empty!",
+    NOT_REGISTERED: "You don't have registered!"
+}
 
 export const Login = () => {
     const navigate = useNavigate()
     const [quote, setQuote] = useState([])
     const [value, setValue] = useState({ username: "", password: "" })
-    let { setUserValues } = useContext(AuthContext)
+    const [error, setError] = useState("")
+    const { setUserValues } = useContext(AuthContext)
+
     const navigateHandler = () => navigate("/", { replace: true })
 
-    const setFieldValue = (e) => {
-        const { value, name } = e.target
+    const setFieldValue = ({ target: { value, name } }) => {
         setValue((prevValue) => ({ ...prevValue, [name]: value }))
     }
 
@@ -24,7 +31,16 @@ export const Login = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        setUserValues(value)
+        const { username, password } = value
+
+        if (!username || !password) return setError(errorMessage?.EMPTY_FIELD)
+
+        const userDetail = authorizedUsers?.find((user) => user.username === username && user.password === password);
+        if (userDetail) {
+            navigate("/", { replace: true })
+            return setUserValues(userDetail)
+        }
+        setError(errorMessage?.NOT_REGISTERED)
     }
 
     const inputs = [
@@ -45,25 +61,25 @@ export const Login = () => {
     return <Card>
         <LoginHeader>Login</LoginHeader>
         <InputContainer onSubmit={(e) => submitHandler(e)}>
-            {
-                inputs?.map(({ id, ...rest }) => <Input key={id} {...{ ...rest }} onChange={e => setFieldValue(e)} />)
-            }
+            {inputs?.map(({ id, ...rest }) => <Input key={id} {...{ ...rest }} onChange={e => setFieldValue(e)} />)}
+            {error && <Error>{error}</Error>}
             <Button type="submit">Login</Button>
         </InputContainer>
-        <Quote>
-            {
-                Object.entries(quote).map(([key, value]) => <span key={key}>{value}</span>)
-            }
-        </Quote>
+        <Quote>{Object.entries(quote).map(([key, value]) => <span key={key}>{value}</span>)}</Quote>
         <Back onClick={navigateHandler}>Back</Back>
     </Card>
 }
+
+const Error = styled.p`
+    padding: 0;
+    margin: 0;
+    color: #ffffff;
+`
 
 const LoginHeader = styled.h2`
    color: white;
    margin-top: 2.3rem;
 `
-
 const Back = styled.span`
     cursor: pointer;
     position: absolute;
