@@ -2,7 +2,7 @@ import { Card } from "../../components"
 import styled from "styled-components"
 
 
-const Warning = ({ role }) => {
+const WarningMg = ({ role }) => {
     return <Card width="450px" height="100px">
         <WarningMessage>
             <span>{`You don't have a permission to ${role} page`}</span>
@@ -23,4 +23,4 @@ const WarningMessage = styled.div`
 
 `
 
-export default Warning
+export default WarningMg

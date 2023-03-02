@@ -1,3 +1,4 @@
 import Home from "./Home";
+import WarningMg from "./Warning";
 
-export { Home }
+export { Home, WarningMg }

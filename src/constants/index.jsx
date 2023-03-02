@@ -14,10 +14,22 @@ export const quotes = {
 };
 
 export const roles = {
-    CUSTOMER: "Customer",
-    ADMIN: "Admin",
-    SELLER: "Seller",
-    ASSISTANT: "Assistant"
+    CUSTOMER: {
+        role: "Customer",
+        role_code: "1010",
+    },
+    ADMIN: {
+        role: "Admin",
+        role_code: "0310"
+    },
+    SELLER: {
+        role: "Seller",
+        role_code: "0303",
+    },
+    ASSISTANT: {
+        role: "Assistant",
+        role_code: "2703"
+    }
 }
 
 export const authorizedUsers = [
@@ -46,4 +58,11 @@ export const authorizedUsers = [
         userID: "1ruf23"
     },
 ]
+
+export const userType = {
+    "0310": "Admin",
+    "1010": "Customer",
+    "0303": "Seller",
+    "2703": "Assistant",
+}
 

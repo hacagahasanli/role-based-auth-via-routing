@@ -78,7 +78,7 @@ const Error = styled.p`
 
 const LoginHeader = styled.h2`
    color: white;
-   margin-top: 2.3rem;
+   margin-top: 1.3rem;
 `
 const Back = styled.span`
     cursor: pointer;

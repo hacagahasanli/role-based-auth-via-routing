@@ -4,12 +4,6 @@ import { roles } from "../constants";
 import { Home } from "../pages";
 import { PageEntrance } from "../shared/PageEntrance";
 
-const rolesCodes = {
-    ADMIN: "0310",
-    CUSTOMER: "1010",
-    SELLER: "0303",
-    ASSISTANT: "2703"
-}
 
 export const router = createBrowserRouter([
     {
@@ -22,31 +16,31 @@ export const router = createBrowserRouter([
         element: <Login />
     },
     {
-        element: <Auth roleCode={rolesCodes?.ADMIN} />,
+        element: <Auth roleCode={roles.ADMIN.role_code} />,
         children: [{
             path: "/admin",
-            element: <PageEntrance name={roles.ADMIN} />
+            element: <PageEntrance name={roles.ADMIN.role} />
         }]
     },
     {
-        element: <Auth roleCode={rolesCodes?.ADMIN} />,
+        element: <Auth roleCode={roles.CUSTOMER.role_code} />,
         children: [{
             path: "/customer",
-            element: <PageEntrance name={roles.CUSTOMER} />
+            element: <PageEntrance name={roles.CUSTOMER.role} />
         }]
     },
     {
-        element: <Auth roleCode={rolesCodes?.SELLER} />,
+        element: <Auth roleCode={roles.SELLER.role_code} />,
         children: [{
             path: "/seller",
-            element: <PageEntrance name={roles.SELLER} />
+            element: <PageEntrance name={roles.SELLER.role} />
         }]
     },
     {
-        element: <Auth roleCode={rolesCodes?.ASSISTANT} />,
+        element: <Auth roleCode={roles.ASSISTANT.role_code} />,
         children: [{
             path: "/assistant",
-            element: <PageEntrance name={roles.ASSISTANT} />
+            element: <PageEntrance name={roles.ASSISTANT.role} />
         }]
     },
     {
