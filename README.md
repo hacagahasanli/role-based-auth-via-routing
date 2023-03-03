@@ -4,18 +4,18 @@ Role based authentication via routing (tiny app)
 # Valid username and password
 As a/an
 
-# Admin:
+## Admin:
   username: mike
   password: mike123
 
-# Customer
+## Customer
   username: kate
   password: kate123
 
-# Seller 
+## Seller 
  username: ruf
  password: ruf123
 
-# Assistant
+## Assistant
   username: jane
   password: jane123
