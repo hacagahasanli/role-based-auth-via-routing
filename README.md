@@ -1,8 +1,8 @@
 # role-based-auth-via-routing
 Role based authentication via routing (tiny app)
 
-# Valid username and password
-As a/an
+## Valid username and password
+### As a/an
 
 ## Admin:
   username: mike
