@@ -4,7 +4,7 @@ Role based authentication via routing (tiny app)
 ## Valid username and password
 ### As a/an
 
-## Admin:
+## Admin
   username: mike
   password: mike123
 
